@@ -29,6 +29,18 @@ const nomeEstados = {
     "SP" : "São Paulo",
     "TO" : "Tocantins"
 }
+
+// Função em que ao clicar em começar, habilite somente o primeiro campo e chame a função para que a bandeira seja mostrada
+const comecar = () => {
+    document.getElementById("s0").disabled = false
+    document.getElementById("s1").disabled = true
+    document.getElementById("s2").disabled = true
+    mostrarBandeira()
+    document.getElementById("botaoComecar").disabled = true // desabilita o botão de começar após a bandeira aparecer
+    document.getElementById("botaoProximo").disabled = false // habilita botão de próximo e de chute
+    document.getElementById("botaoChute").disabled = false
+}
+
 //Função para mostrar a bandeira, ao clicar no botão próximo
 const mostrarBandeira = () => {
     const imagem = document.getElementById("bandeira")
