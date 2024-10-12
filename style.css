@@ -6,43 +6,56 @@
     overflow-y: hidden;
     overflow-x: hidden;
 }
-
-.cabecalho {
-
-    background-color: black;
+#title {
     color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: medium;
-    border-radius: 5%;
-    border: 2px solid gray;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
-    border-width: solid;
-    height: 50px;
+}
+#output {
+    color: white;
+}
+button, p {
+    color: rgb(255, 255, 255);
 }
 body {
-    background-color: teal;
+    background-color: rgb(2, 83, 99);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     width: 100vw;
+}
+h2{
+    color: white;
+}
+.center, aside, section {
     display: flex;
+    justify-content: center;
+}
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+.interface {
+    display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    height: 600px;
+    width: 600px;
 }
-
-.principal {
+.bandeira {
+    width: 240px;
+    height: 135px;
+}
+.mapa {
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    align-items: center;
-    padding-top: 100px;
-    gap: 100px
-}
-.formulario {
-    width: 300px;
-}
-.mapaBrasil {
+    height: 450px;
     width: 450px;
-    height: 450px
+}
+.cabecalho {
+    display: flex;
+    justify-self: flex-start;
+    align-self: flex-start;
 }
