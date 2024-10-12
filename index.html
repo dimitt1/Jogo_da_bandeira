@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qual que é</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="scripts.js" defer></script>
-</head>
 
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Qual que é - Jogo da Bandeira</title>
 
-<body>
-    <div>
-        <section class="cabecalho">
-            <p><h1>QUAL QUE É?</h1></p>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+        <link rel="stylesheet" href="style.css">
+
+        <script src="script.js"></script>
+
+    </head>
+
+    <body>
+        <section> 
+            <div class="cabecalho">
+                <p><h4></h4></p>
+            </div>
         </section>
-        <section class="principal">
-            <div class="mapaBrasil">
+    <section>
+            <div class="mapa">
                 <svg xmlns:mapsvg="http://mapsvg.com" xmlns:dc="http://purl.org/dc/elements/1.1/"
                     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg"
                     xmlns="http://www.w3.org/2000/svg" viewbox="0 0 612 639">
@@ -130,81 +137,132 @@
                     id="TO" />
                 </svg>
             </div>
-            <div class="resposta">
+            <div class="interface">
 
-                <body>            
+                <section class="bandeira">           
                     <aside>
-                        <div id="flagDiv">
-                            <img id="flag" class="center" width="240px" height="135px">
+                        <div id="bandeiraDiv">
+                            <img id="bandeira" class="center" width="240px" height="135px">
                         </div>
                     </aside>
-            
-                    <br>
-            
-                    <section>
-            
-                        <div id="guessingDiv">
-            
+                </section>    
+            </br>
+                <section>
+                    <div id="respostaDiv">
                             <form>
-            
                                 <div>
-            
-                                    <input id="g0" class="guessG" type="text" onkeyup="searchForGuess();">
-                                    <select id="s0" class="guessS"></select>
-            
+                                    <form>
+                                        <select id="s0" name="selecao" disabled>
+                                            <option>Escolher &#9013</option>
+                                            <option  id="SE">Aracaju</option>
+                                            <option  id="PA">Belém</option>
+                                            <option  id="MG">Belo Horizonte</option>
+                                            <option  id="RR">Boa Vista</option>
+                                            <option  id="DF">Brasília</option>
+                                            <option  id="MS">Campo Grande</option>
+                                            <option  id="MT">Cuiabá</option>
+                                            <option  id="PR">Curitiba</option>
+                                            <option  id="SC">Florianópolis</option>
+                                            <option  id="CE">Fortaleza</option>
+                                            <option  id="GO">Goiânia</option>
+                                            <option  id="PB">João Pessoa</option>
+                                            <option  id="AP">Macapá</option>
+                                            <option  id="AL">Maceió</option>
+                                            <option  id="AM">Manaus</option>
+                                            <option  id="RN">Natal</option>
+                                            <option  id="TO">Palmas</option>
+                                            <option  id="RS">Porto Alegre</option>
+                                            <option  id="RO">Porto Velho</option>
+                                            <option  id="PE">Recife</option>
+                                            <option  id="AC">Rio Branco</option>
+                                            <option  id="RJ">Rio de Janeiro</option>
+                                            <option  id="BA">Salvador</option>
+                                            <option  id="MA">São Luís</option>
+                                            <option  id="SP">São Paulo</option>
+                                            <option  id="PI">Teresina</option>
+                                            <option  id="ES">Vitória</option>
+                                          </select>
+                                      </form>
                                 </div>
-            
                                 <div>
-            
-                                    <input id="g1" class="guessG" type="text" onkeyup="searchForGuess();">
-                                    <select id="s1" class="guessS"></select>
-                                
+                                    <form>
+                                        <select id="s1" name="selecao" disabled>
+                                            <option>Escolher &#9013</option>
+                                            <option  id="SE">Aracaju</option>
+                                            <option  id="PA">Belém</option>
+                                            <option  id="MG">Belo Horizonte</option>
+                                            <option  id="RR">Boa Vista</option>
+                                            <option  id="DF">Brasília</option>
+                                            <option  id="MS">Campo Grande</option>
+                                            <option  id="MT">Cuiabá</option>
+                                            <option  id="PR">Curitiba</option>
+                                            <option  id="SC">Florianópolis</option>
+                                            <option  id="CE">Fortaleza</option>
+                                            <option  id="GO">Goiânia</option>
+                                            <option  id="PB">João Pessoa</option>
+                                            <option  id="AP">Macapá</option>
+                                            <option  id="AL">Maceió</option>
+                                            <option  id="AM">Manaus</option>
+                                            <option  id="RN">Natal</option>
+                                            <option  id="TO">Palmas</option>
+                                            <option  id="RS">Porto Alegre</option>
+                                            <option  id="RO">Porto Velho</option>
+                                            <option  id="PE">Recife</option>
+                                            <option  id="AC">Rio Branco</option>
+                                            <option  id="RJ">Rio de Janeiro</option>
+                                            <option  id="BA">Salvador</option>
+                                            <option  id="MA">São Luís</option>
+                                            <option  id="SP">São Paulo</option>
+                                            <option  id="PI">Teresina</option>
+                                            <option  id="ES">Vitória</option>
+                                          </select>
+                                      </form>
                                 </div>
-            
                                 <div>
-            
-                                    <input id="g2" class="guessG" type="text" onkeyup="searchForGuess();">
-                                    <select id="s2" class="guessS"></select>
-                                
+                                    <form>
+                                        <select id="s2" name="selecao" disabled>
+                                            <option>Escolher &#9013</option>
+                                            <option  id="SE">Aracaju</option>
+                                            <option  id="PA">Belém</option>
+                                            <option  id="MG">Belo Horizonte</option>
+                                            <option  id="RR">Boa Vista</option>
+                                            <option  id="DF">Brasília</option>
+                                            <option  id="MS">Campo Grande</option>
+                                            <option  id="MT">Cuiabá</option>
+                                            <option  id="PR">Curitiba</option>
+                                            <option  id="SC">Florianópolis</option>
+                                            <option  id="CE">Fortaleza</option>
+                                            <option  id="GO">Goiânia</option>
+                                            <option  id="PB">João Pessoa</option>
+                                            <option  id="AP">Macapá</option>
+                                            <option  id="AL">Maceió</option>
+                                            <option  id="AM">Manaus</option>
+                                            <option  id="RN">Natal</option>
+                                            <option  id="TO">Palmas</option>
+                                            <option  id="RS">Porto Alegre</option>
+                                            <option  id="RO">Porto Velho</option>
+                                            <option  id="PE">Recife</option>
+                                            <option  id="AC">Rio Branco</option>
+                                            <option  id="RJ">Rio de Janeiro</option>
+                                            <option  id="BA">Salvador</option>
+                                            <option  id="MA">São Luís</option>
+                                            <option  id="SP">São Paulo</option>
+                                            <option  id="PI">Teresina</option>
+                                            <option  id="ES">Vitória</option>
+                                          </select>
+                                      </form>
                                 </div>
-            
-                                <div>
-                                    
-                                    <input id="g3" class="guessG" type="text" onkeyup="searchForGuess();">
-                                    <select id="s3" class="guessS"></select>
-                                
-                                </div>
-            
-                                <div>
-            
-                                    <input id="g4" class="guessG" type="text" onchange="searchForGuess();">
-                                    <select id="s4" class="guessS"></select>
-                                
-                                </div>
-            
-                                <div>
-                                    
-                                    <input id="g5" class="guessG" type="text" onkeyup="searchForGuess();">
-                                    <select id="s5" class="guessS"></select>
-                                
-                                </div>
-            
                             </form>
             
-                            <button id="guessButton" onclick="guess();">Chutar</button>
-                            <button id="nextButton" onclick="next();">Próximo</button>
-                
-                        </div>
+                            <button id="botaoChute" >Chutar</button>
+                            <button id="botaoProximo" onclick="mostrarBandeira();">Próximo</button>
+                            <button id="botaoComecar">Começar</button>
             
+                        </div>
                     </section>
             
-                    <h2 id="output" class="center"></h2>
-            
-                    <script>init()</script>
+                    <h2 id="saida" class="center"></h2>
             </div>
         </section>
-    </div>
 </body>
-
-
 </html>
