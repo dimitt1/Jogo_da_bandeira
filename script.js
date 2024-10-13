@@ -51,5 +51,28 @@ const mostrarBandeira = () => {
 }
 
 const numAleatorio = (min,max) => {
-    return min + Math.floor(Math.random()*max)
+    return min + Math.floor(Math.random()*max) 
+}
+
+// Cria uma função que habilita e desabilita os campos não utilizados pelo jogador, porém precisa de ajustes.
+const palpite = () => {
+    if(document.getElementById("s0").value == "Aracaju"){
+       document.getElementById("saida").textContent = "Correto!!"
+        //Testa com Aracju para poder generalizar depois aos demais estados.
+
+    }
+    else if (document.getElementById("s0").value != "Aracaju"){
+        document.getElementById("s0").disabled = true
+        document.getElementById("s1").disabled = false
+        document.getElementById("saida").textContent = "Incorreto"
+    }
+    else {
+        document.getElementById("s1").disabled = true
+        document.getElementById("s2").disabled = false
+        document.getElementById("saida").textContent = "Incorreto"
+    }
+}
+// Função que recarrega a página ao clicar no "Próximo".
+const reload = () => {
+    window.location.reload(true); 
 }
