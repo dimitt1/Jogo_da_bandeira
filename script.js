@@ -37,16 +37,13 @@ const comecar = () => {
     document.getElementById("s2").disabled = true
     mostrarBandeira()
     document.getElementById("botaoComecar").disabled = true // desabilita o botão de começar após a bandeira aparecer
-    document.getElementById("botaoProximo").disabled = false // habilita botão de próximo e de chute
     document.getElementById("botaoChute").disabled = false
 }
 
 //Função para mostrar a bandeira, ao clicar no botão próximo
 const mostrarBandeira = () => {
     const imagem = document.getElementById("bandeira")
-    const nomeEstado = listaEstados[numAleatorio(0, listaEstados.length)].slice(0, -4)
-    // Os 4 últimos caracteres do título da imagem são '.png', então o slice é utilizado para buscar apenas o código do estado. 
-    const nomeArquivo = "./bandeiras/" + nomeEstado + ".png"
+    const nomeArquivo = "./bandeiras/" + nomeEstado // Removi o '+png' pq nomeEstado já vem com .png no final
     imagem.src = nomeArquivo
 }
 
@@ -54,21 +51,39 @@ const numAleatorio = (min,max) => {
     return min + Math.floor(Math.random()*max) 
 }
 
-// Cria uma função que habilita e desabilita os campos não utilizados pelo jogador, porém precisa de ajustes.
+// Essa constante armazena o nome do estado da rodada. 
+const nomeEstado = listaEstados[numAleatorio(0, listaEstados.length)]
+
+//Função que checa o palpite e habilita e desabilita os campos, por enquanto ainda sem o estado da rodada.
 const palpite = () => {
     if(document.getElementById("s0").value == "Aracaju"){
        document.getElementById("saida").textContent = "Correto!!"
-        //Testa com Aracju para poder generalizar depois aos demais estados.
-
+       document.getElementById("botaoProximo").disabled = false
+       //Testa com Aracaju para poder generalizar depois aos demais estados.
     }
-    else if (document.getElementById("s0").value != "Aracaju"){
-        document.getElementById("s0").disabled = true
-        document.getElementById("s1").disabled = false
-        document.getElementById("saida").textContent = "Incorreto"
-    }
-    else {
+    else if(document.getElementById("s1").value == "Aracaju"){
+        document.getElementById("saida").textContent = "Correto!!"
+        document.getElementById("botaoProximo").disabled = false
+     }
+     else if(document.getElementById("s2").value == "Aracaju"){
+        document.getElementById("saida").textContent = "Correto!!"
+        document.getElementById("botaoProximo").disabled = false
+     }
+    else if (document.getElementById("s1").disabled == false){
         document.getElementById("s1").disabled = true
         document.getElementById("s2").disabled = false
+        document.getElementById("saida").textContent = "Incorreto"
+    }
+    else if (document.getElementById("s2").disabled == false) {
+        document.getElementById("s1").disabled = true
+        document.getElementById("s2").disabled = true
+        document.getElementById("botaoChute").disabled = true
+        document.getElementById("botaoProximo").disabled = false
+        document.getElementById("saida").textContent = 'nome da capital'
+    }
+    else {
+        document.getElementById("s0").disabled = true
+        document.getElementById("s1").disabled = false
         document.getElementById("saida").textContent = "Incorreto"
     }
 }
