@@ -1,33 +1,33 @@
 // Lista dos estados brasileiros 
 const listaEstados = ["AC.png", "AL.png", "AM.png", "AP.png", "BA.png", "CE.png", "DF.png", "ES.png", "GO.png", "MA.png", "MG.png", "MS.png", "MT.png", "PA.png", "PB.png", "PE.png", "PI.png", "PR.png", "RJ.png", "RN.png", "RO.png", "RR.png", "RS.png", "SC.png", "SE.png", "SP.png", "TO.png"]
-const nomeEstados = {
-    "AC" : "Acre",
-    "AL" : "Alagoas",
-    "AM" : "Amazonas",
-    "AP" : "Amapá",
-    "BA" : "Bahia",
-    "CE" : "Ceará",
-    "DF" : "Distrito Federal",
-    "ES" : "Espírito Santo",
-    "GO" : "Goiás",
-    "MA" : "Maranhão",
-    "MG" : "Minas Gerais",
-    "MS" : "Mato Grosso do Sul",
-    "MT" : "Mato Grosso",
-    "PA" : "Pará",
-    "PB" : "Paraíba",
-    "PE" : "Pernambuco",
-    "PI" : "Piauí",
-    "PR" : "Paraná",
+const capitais = { // Mudei os nomes para os nomes das capitais 
+    "AC" : "Rio Branco",
+    "AL" : "Maceió",
+    "AM" : "Manaus",
+    "AP" : "Macapá",
+    "BA" : "Salvador",
+    "CE" : "Fortaleza",
+    "DF" : "Brasília",
+    "ES" : "Vitória",
+    "GO" : "Goiânia",
+    "MA" : "São Luís",
+    "MG" : "Belo Horizonte",
+    "MS" : "Campo Grande",
+    "MT" : "Cuiabá",
+    "PA" : "Belém",
+    "PB" : "João Pessoa",
+    "PE" : "Recife",
+    "PI" : "Teresina",
+    "PR" : "Curitiba",
     "RJ" : "Rio de Janeiro",
-    "RN" : "Rio Grande do Norte",
-    "RO" : "Rondônia",
-    "RR" : "Roiraima",
-    "RS" : "Rio Grande do Sul",
-    "SC" : "Santa Catarina",
-    "SE" : "Sergipe",
+    "RN" : "Natal",
+    "RO" : "Porto Velho",
+    "RR" : "Boa Vista",
+    "RS" : "Porto Alegre",
+    "SC" : "Florianópolis",
+    "SE" : "Aracaju",
     "SP" : "São Paulo",
-    "TO" : "Tocantins"
+    "TO" : "Palmas"
 }
 
 // Função em que ao clicar em começar, habilite somente o primeiro campo e chame a função para que a bandeira seja mostrada
@@ -56,16 +56,18 @@ const nomeEstado = listaEstados[numAleatorio(0, listaEstados.length)]
 
 //Função que checa o palpite e habilita e desabilita os campos, por enquanto ainda sem o estado da rodada.
 const palpite = () => {
-    if(document.getElementById("s0").value == "Aracaju"){
+    const  sigla = nomeEstado.slice(0,-4) 
+    // Usando capitais[sigla] eu consigo acessar a capital pelo registro das capitais 
+    if(document.getElementById("s0").value == capitais[sigla]){
        document.getElementById("saida").textContent = "Correto!!"
        document.getElementById("botaoProximo").disabled = false
        //Testa com Aracaju para poder generalizar depois aos demais estados.
     }
-    else if(document.getElementById("s1").value == "Aracaju"){
+    else if(document.getElementById("s1").value == capitais[sigla]){
         document.getElementById("saida").textContent = "Correto!!"
         document.getElementById("botaoProximo").disabled = false
      }
-     else if(document.getElementById("s2").value == "Aracaju"){
+     else if(document.getElementById("s2").value == capitais[sigla]){
         document.getElementById("saida").textContent = "Correto!!"
         document.getElementById("botaoProximo").disabled = false
      }
@@ -79,7 +81,7 @@ const palpite = () => {
         document.getElementById("s2").disabled = true
         document.getElementById("botaoChute").disabled = true
         document.getElementById("botaoProximo").disabled = false
-        document.getElementById("saida").textContent = 'nome da capital'
+        document.getElementById("saida").textContent = capitais[sigla]
     }
     else {
         document.getElementById("s0").disabled = true
