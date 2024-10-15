@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+body {
+    background-color: rgb(2, 83, 99);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+.botao {
+    display: flex;
+    background-size: contain;
+    background-color: transparent;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 175px;
+    height: 75px;
+    border-radius: 30rem;
+}
