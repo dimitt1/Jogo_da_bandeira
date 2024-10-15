@@ -29,17 +29,12 @@ const estadosInfo = { // cria registro com estado e capital
     "SP" : ["São Paulo","São Paulo"],
     "TO" : ["Tocantins","Palmas"]
 }
-
-
-// Função em que ao clicar em começar, habilite somente o primeiro campo e chame a função para que a bandeira seja mostrada
-const comecar = () => {
-    document.getElementById("s0").disabled = false
-    document.getElementById("s1").disabled = true
-    document.getElementById("s2").disabled = true
+// Cria uma função para esconder o formulário
+const esconder = () => {
+    document.getElementById("respostaDiv").style.display = 'none';
+    document.getElementById("h5").style.display = 'none';
     mostrarBandeira()
-    document.getElementById("botaoChute").disabled = false
 }
-
 //Função para mostrar a bandeira, ao clicar no botão próximo
 const mostrarBandeira = () => {
     const imagem = document.getElementById("bandeira")
