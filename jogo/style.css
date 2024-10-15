@@ -5,17 +5,8 @@
     text-decoration: none;
     overflow-y: hidden;
     overflow-x: hidden;
-}
-#title {
-    color: white;
-}
-#output {
-    color: white;
-}
-button, p {
-    color: rgb(255, 255, 255);
-}
-body {
+    }
+    body {
     background-color: rgb(2, 83, 99);
     display: flex;
     flex-direction: column;
@@ -23,38 +14,49 @@ body {
     align-items: center;
     height: 100vh;
     width: 100vw;
-}
-h2{
+    }
+    h2 ,h5, button, p {
     color: white;
-}
-.center, aside, section {
+    }
+    .center, aside, section {
     display: flex;
     justify-content: center;
-}
-.interface {
+    }
+    .interface {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     height: 600px;
     width: 600px;
-}
-.bandeira {
+    }
+    .bandeira {
     width: 240px;
     height: 135px;
-}
-.mapa {
+    border: 0px
+    }
+    .mapa {
     display: flex;
     justify-content: center;
     height: 450px;
     width: 450px;
-}
-.logo {
+    }
+    .logo {
     display: flex;
-    width: 200px;
-    height: 150px;
-}
-.geral {
+    width: 150px;
+    }
+    .geral {
     display: flex;
     flex-direction: row;
-}
+    }
+    path {
+    fill: #6ea56e;
+    stroke: black;
+    stroke-width: 1px;
+    }
+    path:hover {
+    fill: rgb(214, 41, 41);
+    stroke: black;
+    stroke-width: 2px;
+    transition: fill 0.4s;
+    }
