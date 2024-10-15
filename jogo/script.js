@@ -43,7 +43,7 @@ const comecar = () => {
 //Função para mostrar a bandeira, ao clicar no botão próximo
 const mostrarBandeira = () => {
     const imagem = document.getElementById("bandeira")
-    const nomeArquivo = "./bandeiras/" + nomeEstado // Removi o '+png' pq nomeEstado já vem com .png no final
+    const nomeArquivo = "/bandeiras/" + nomeEstado // Removi o '+png' pq nomeEstado já vem com .png no final
     imagem.src = nomeArquivo
 }
 
