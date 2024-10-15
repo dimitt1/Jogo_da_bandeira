@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Qual que é - Jogo da Bandeira</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
         <link rel="stylesheet" href="style.css">
         <script src="script.js"></script>
@@ -16,6 +18,7 @@
             <img src="/imagens/logo.png">
         </div>
     </section>
+    <h5 class="texto">Selecione o Estado no mapa</h5>
     <div class="geral">
     <section>
         <div class="mapa">
@@ -142,6 +145,7 @@
                     </aside>
                 </section>    
             </br>
+            <h5 id="h5"></h5>
                 <section>
                     <div id="respostaDiv">
                             <form>
@@ -249,7 +253,7 @@
                                 </div>
                             </form>
             
-                            <button id="botaoChute" onclick="palpite();" >Chutar</button>
+                            <button id="botaoChute" onclick="palpite();" disabled>Chutar</button>
                             <button id="botaoProximo" onclick="reload();" disabled>Próximo</button>
                         </div>
                     </section>
