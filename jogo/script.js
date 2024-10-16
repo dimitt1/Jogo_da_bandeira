@@ -18,7 +18,7 @@ const estadosInfo = { // cria registro com estado e capital
     "PB" : ["Paraíba","João Pessoa"],
     "PE" : ["Pernambuco","Recife"],
     "PI" : ["Piauí","Teresina"],
-    "PR" : ["Paraná","Cuiabá"],
+    "PR" : ["Paraná","Curitiba"],
     "RJ" : ["Rio de Janeiro","Rio de Janeiro"],
     "RN" : ["Rio Grande do Norte","Natal"],
     "RO" : ["Rondônia","Porto Velho"],
@@ -70,13 +70,14 @@ const sigla = nomeEstado.slice(0,-4)
 
 //Função que checa o palpite e habilita e desabilita os campos, por enquanto ainda sem o estado da rodada.
 const palpite = () => {
-    // Usando capitais[sigla] eu consigo acessar a capital pelo registro das capitais 
     if (document.getElementById("s0").value == "Escolher ⌵") {
         document.getElementById("saida").textContent = "Selecione uma capital"
     }
+    // Usando esatdosInfo[sigla] eu consigo acessar a capital pelo registro das capitais
     else if(document.getElementById("s0").value == estadosInfo[sigla][1]){
        document.getElementById("saida").textContent = "Correto!!"
        document.getElementById("botaoProximo").disabled = false
+       document.getElementById("botaoChute").disabled = true
     }
     else if (document.getElementById("s0").disabled == false){
         document.getElementById("s0").disabled = true
@@ -89,6 +90,7 @@ const palpite = () => {
     else if(document.getElementById("s1").value == estadosInfo[sigla][1]){
         document.getElementById("saida").textContent = "Correto!!"
         document.getElementById("botaoProximo").disabled = false
+        document.getElementById("botaoChute").disabled = false
      }
      else if (document.getElementById("s1").disabled == false){
         document.getElementById("s1").disabled = true
@@ -101,6 +103,7 @@ const palpite = () => {
      else if(document.getElementById("s2").value == estadosInfo[sigla][1]){
         document.getElementById("saida").textContent = "Correto!!"
         document.getElementById("botaoProximo").disabled = false
+        document.getElementById("botaoChute").disabled = false
      }
     else {
         document.getElementById("s1").disabled = true
