@@ -90,7 +90,7 @@ const palpite = () => {
     else if(document.getElementById("s1").value == estadosInfo[sigla][1]){
         document.getElementById("saida").textContent = "Correto!!"
         document.getElementById("botaoProximo").disabled = false
-        document.getElementById("botaoChute").disabled = false
+        document.getElementById("botaoChute").disabled = true
      }
      else if (document.getElementById("s1").disabled == false){
         document.getElementById("s1").disabled = true
@@ -103,7 +103,7 @@ const palpite = () => {
      else if(document.getElementById("s2").value == estadosInfo[sigla][1]){
         document.getElementById("saida").textContent = "Correto!!"
         document.getElementById("botaoProximo").disabled = false
-        document.getElementById("botaoChute").disabled = false
+        document.getElementById("botaoChute").disabled = true
      }
     else {
         document.getElementById("s1").disabled = true
