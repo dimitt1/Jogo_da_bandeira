@@ -71,35 +71,45 @@ const sigla = nomeEstado.slice(0,-4)
 //Função que checa o palpite e habilita e desabilita os campos, por enquanto ainda sem o estado da rodada.
 const palpite = () => {
     // Usando capitais[sigla] eu consigo acessar a capital pelo registro das capitais 
-    if(document.getElementById("s0").value == estadosInfo[sigla][1]){
+    if (document.getElementById("s0").value == "Escolher ⌵") {
+        document.getElementById("saida").textContent = "Selecione uma capital"
+    }
+    else if(document.getElementById("s0").value == estadosInfo[sigla][1]){
        document.getElementById("saida").textContent = "Correto!!"
        document.getElementById("botaoProximo").disabled = false
+    }
+    else if (document.getElementById("s0").disabled == false){
+        document.getElementById("s0").disabled = true
+        document.getElementById("s1").disabled = false
+        document.getElementById("saida").textContent = "Incorreto"
+    }
+    else if (document.getElementById("s1").value == "Escolher ⌵") {
+        document.getElementById("saida").textContent = "Selecione uma capital"
     }
     else if(document.getElementById("s1").value == estadosInfo[sigla][1]){
         document.getElementById("saida").textContent = "Correto!!"
         document.getElementById("botaoProximo").disabled = false
      }
-     else if(document.getElementById("s2").value == estadosInfo[sigla][1]){
-        document.getElementById("saida").textContent = "Correto!!"
-        document.getElementById("botaoProximo").disabled = false
-     }
-    else if (document.getElementById("s1").disabled == false){
+     else if (document.getElementById("s1").disabled == false){
         document.getElementById("s1").disabled = true
         document.getElementById("s2").disabled = false
         document.getElementById("saida").textContent = "Incorreto"
     }
-    else if (document.getElementById("s2").disabled == false) {
+     else if (document.getElementById("s2").value == "Escolher ⌵") {
+        document.getElementById("saida").textContent = "Selecione uma capital"
+    }
+     else if(document.getElementById("s2").value == estadosInfo[sigla][1]){
+        document.getElementById("saida").textContent = "Correto!!"
+        document.getElementById("botaoProximo").disabled = false
+     }
+    else {
         document.getElementById("s1").disabled = true
         document.getElementById("s2").disabled = true
         document.getElementById("botaoChute").disabled = true
         document.getElementById("botaoProximo").disabled = false
         document.getElementById("saida").textContent = estadosInfo[sigla][1]
     }
-    else {
-        document.getElementById("s0").disabled = true
-        document.getElementById("s1").disabled = false
-        document.getElementById("saida").textContent = "Incorreto"
-    }
+   
 }
 // Função que recarrega a página ao clicar no "Próximo".
 const reload = () => {
