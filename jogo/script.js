@@ -30,6 +30,7 @@ const estadosInfo = { // cria registro com estado e capital
     "TO" : ["Tocantins","Palmas"]
 }
 // Cria uma função para esconder o formulário
+
 const esconder = () => {
     document.getElementById("respostaDiv").style.display = 'none';
     document.getElementById("h5").style.display = 'none';
@@ -57,7 +58,6 @@ const palpite = () => {
     if(document.getElementById("s0").value == estadosInfo[sigla][1]){
        document.getElementById("saida").textContent = "Correto!!"
        document.getElementById("botaoProximo").disabled = false
-       //Testa com Aracaju para poder generalizar depois aos demais estados.
     }
     else if(document.getElementById("s1").value == estadosInfo[sigla][1]){
         document.getElementById("saida").textContent = "Correto!!"
