@@ -29,8 +29,23 @@ const estadosInfo = { // cria registro com estado e capital
     "SP" : ["São Paulo","São Paulo"],
     "TO" : ["Tocantins","Palmas"]
 }
-// Cria uma função para esconder o formulário
 
+// Cria uma função para verificar palpite do mapa 
+const palpiteMapa = (evento) => { 
+const texto = evento.target.id; // pega o id da área clicada
+if(texto == sigla) { // compara o id com a sigla do estado da rodada
+    document.getElementById("txtEstado").textContent = 'Correto!!'
+    document.getElementById("respostaDiv").style.display ='initial'
+    document.getElementById("h5").style.display = 'initial'
+    document.getElementById("s0").disabled = false
+    document.getElementById("mapa").style.display = 'none';
+}
+else {
+    document.getElementById("txtEstado").textContent = 'Incorreto!!'
+}
+}
+
+// Cria uma função para esconder o formulário
 const esconder = () => {
     document.getElementById("respostaDiv").style.display = 'none';
     document.getElementById("h5").style.display = 'none';
@@ -50,10 +65,11 @@ const numAleatorio = (min,max) => {
 
 // Essa constante armazena o nome do estado da rodada. 
 const nomeEstado = listaEstados[numAleatorio(0, listaEstados.length)]
+// Essa constante armazena a sigla do estado da rodada
+const sigla = nomeEstado.slice(0,-4) 
 
 //Função que checa o palpite e habilita e desabilita os campos, por enquanto ainda sem o estado da rodada.
 const palpite = () => {
-    const  sigla = nomeEstado.slice(0,-4) 
     // Usando capitais[sigla] eu consigo acessar a capital pelo registro das capitais 
     if(document.getElementById("s0").value == estadosInfo[sigla][1]){
        document.getElementById("saida").textContent = "Correto!!"

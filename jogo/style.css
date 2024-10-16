@@ -18,6 +18,11 @@
     h2 ,h5, button, p {
     color: white;
     }
+    h5, h2, .texto, .txtEstado {
+    font-family: Bungee, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    }
     .center, aside, section {
     display: flex;
     justify-content: center;
@@ -60,8 +65,19 @@
     stroke-width: 2px;
     transition: fill 0.4s;
     }
-    .texto {
-        font-family: Bungee, sans-serif;
-        font-weight: 400;
-        font-style: normal;
+    .resposta {
+    display: flex;
+    }
+        
+    .txtEstado {
+    color: yellow;
+    }
+    .form, .botao {
+    margin-top: 20px;
+    font-family: Bungee, sans-serif;
+    font-size: 12px;
+    color: #6b6b6b;
+    width: 170px;
+    height: 30px;
+    border-radius: 0.4rem;
     }
