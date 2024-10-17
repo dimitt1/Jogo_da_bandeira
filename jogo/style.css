@@ -19,6 +19,7 @@
     color: white;
     }
     h5, h2, .texto, .txtEstado {
+    user-select: none;
     font-family: Bungee, sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -36,6 +37,7 @@
     width: 600px;
     }
     .bandeira {
+    user-select: none;
     width: 240px;
     height: 135px;
     border: 0px
@@ -47,6 +49,7 @@
     width: 430.98px;
     }
     .logo {
+    user-select: none;
     display: flex;
     width: 150px;
     }
@@ -68,11 +71,11 @@
     .resposta {
     display: flex;
     }
-        
     .txtEstado {
     color: yellow;
     }
     .form, .botao {
+    user-select: none;
     margin-top: 20px;
     font-family: Bungee, sans-serif;
     font-size: 12px;

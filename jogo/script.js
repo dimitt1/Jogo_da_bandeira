@@ -51,7 +51,7 @@ const palpiteMapa = (evento) => {
         document.getElementById("botaoProximo").style.display = 'initial'
     }
     else {
-        if (errados.length == 2) { // se usuário já errou 2 vezes
+        if (errados.length == 2 && errados[0] != evento.target && errados[1] != evento.target) { // se usuário já errou 2 vezes
             document.getElementById("txtEstado").textContent = 'Tente Novamente!!'
             document.getElementById(sigla).classList.add('estadoCerto') // cria classe para estado certo 
             document.getElementById('botaoProximo').style.display = 'initial'
