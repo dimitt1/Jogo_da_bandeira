@@ -44,7 +44,7 @@
     display: flex;
     justify-content: center;
     height: 450px;
-    width: 450px;
+    width: 430.98px;
     }
     .logo {
     display: flex;
@@ -80,4 +80,10 @@
     width: 170px;
     height: 30px;
     border-radius: 0.4rem;
+    }
+    .estadoCerto {
+    fill: rgb(0, 255, 0)
+    }
+    .errados {
+    fill: rgb(255, 0, 0)
     }
