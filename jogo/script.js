@@ -30,6 +30,36 @@ const estadosInfo = { // cria registro com estado e capital
     "TO" : ["Tocantins","Palmas"]
 }
 
+const numAleatorio = (min,max) => {
+    return min + Math.floor(Math.random()*max) 
+}
+
+// Essa constante armazena o nome do estado da rodada. 
+const nomeEstado = listaEstados[numAleatorio(0, listaEstados.length)]
+// Essa constante armazena a sigla do estado da rodada
+const sigla = nomeEstado.slice(0,-4) 
+// Essa constante armazena a capital do estado da rodada
+const capital = estadosInfo[sigla][1]
+
+// Cria uma função para esconder o formulário 
+// (agora a função esconde cada elemento individualmente, em vez da div inteira)
+const esconder = () => {
+    document.getElementById("s0").style.display = 'none'
+    document.getElementById("s1").style.display = 'none'
+    document.getElementById("s2").style.display = 'none'
+    document.getElementById("botaoChute").style.display = 'none'
+    document.getElementById("botaoProximo").style.display = 'none'
+    document.getElementById("h5").style.display = 'none'
+    mostrarBandeira(nomeEstado)
+}
+//Função para mostrar a bandeira, ao clicar no botão próximo
+const mostrarBandeira = (nomeEstado) => {
+    const imagem = document.getElementById("bandeira")
+    const nomeArquivo = "/bandeiras/" + nomeEstado // Removi o '+png' pq nomeEstado já vem com .png no final
+    imagem.src = nomeArquivo
+    document.getElementById("h5").textContent = "Selecione a capital de " + estadosInfo[nomeEstado.slice(0,-4)][0]
+}
+
 // Cria uma função para verificar palpite do mapa 
 const palpiteMapa = (evento) => { 
     const errados = [...document.getElementsByClassName('errados')] // pegamos os estados já clicados e diferentes da bandeira da rodada
@@ -64,41 +94,15 @@ const palpiteMapa = (evento) => {
     }
 }
 
-// Cria uma função para esconder o formulário 
-// (agora a função esconde cada elemento individualmente, em vez da div inteira)
-const esconder = () => {
-    document.getElementById("s0").style.display = 'none'
-    document.getElementById("s1").style.display = 'none'
-    document.getElementById("s2").style.display = 'none'
-    document.getElementById("botaoChute").style.display = 'none'
-    document.getElementById("botaoProximo").style.display = 'none'
-    document.getElementById("h5").style.display = 'none'
-    mostrarBandeira()
-}
-//Função para mostrar a bandeira, ao clicar no botão próximo
-const mostrarBandeira = () => {
-    const imagem = document.getElementById("bandeira")
-    const nomeArquivo = "/bandeiras/" + nomeEstado // Removi o '+png' pq nomeEstado já vem com .png no final
-    imagem.src = nomeArquivo
-    document.getElementById("h5").textContent = "Selecione a capital de " + estadosInfo[nomeEstado.slice(0,-4)][0]
-}
-
-const numAleatorio = (min,max) => {
-    return min + Math.floor(Math.random()*max) 
-}
-
-// Essa constante armazena o nome do estado da rodada. 
-const nomeEstado = listaEstados[numAleatorio(0, listaEstados.length)]
-// Essa constante armazena a sigla do estado da rodada
-const sigla = nomeEstado.slice(0,-4) 
+ 
 
 //Função que checa o palpite e habilita e desabilita os campos, por enquanto ainda sem o estado da rodada.
-const palpite = () => {
+const palpite = (capital) => {
     if (document.getElementById("s0").value == "Escolher ⌵") {
         document.getElementById("saida").textContent = "Selecione uma capital"
     }
     // Usando esatdosInfo[sigla] eu consigo acessar a capital pelo registro das capitais
-    else if(document.getElementById("s0").value == estadosInfo[sigla][1]){
+    else if(document.getElementById("s0").value == capital){
        document.getElementById("saida").textContent = "Correto!!"
        document.getElementById("botaoProximo").disabled = false
        document.getElementById("botaoChute").disabled = true
@@ -111,7 +115,7 @@ const palpite = () => {
     else if (document.getElementById("s1").value == "Escolher ⌵") {
         document.getElementById("saida").textContent = "Selecione uma capital"
     }
-    else if(document.getElementById("s1").value == estadosInfo[sigla][1]){
+    else if(document.getElementById("s1").value == capital){
         document.getElementById("saida").textContent = "Correto!!"
         document.getElementById("botaoProximo").disabled = false
         document.getElementById("botaoChute").disabled = true
@@ -124,7 +128,7 @@ const palpite = () => {
      else if (document.getElementById("s2").value == "Escolher ⌵") {
         document.getElementById("saida").textContent = "Selecione uma capital"
     }
-     else if(document.getElementById("s2").value == estadosInfo[sigla][1]){
+     else if(document.getElementById("s2").value == capital){
         document.getElementById("saida").textContent = "Correto!!"
         document.getElementById("botaoProximo").disabled = false
         document.getElementById("botaoChute").disabled = true
@@ -134,7 +138,7 @@ const palpite = () => {
         document.getElementById("s2").disabled = true
         document.getElementById("botaoChute").disabled = true
         document.getElementById("botaoProximo").disabled = false
-        document.getElementById("saida").textContent = estadosInfo[sigla][1]
+        document.getElementById("saida").textContent = capital
     }
    
 }
