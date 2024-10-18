@@ -78,9 +78,14 @@ const palpiteMapa = (evento) => {
         some("mapa") 
     }
     else {
-        if (errados.length == 2 && errados[0] != evento.target && errados[1] != evento.target) { // se usuário já errou 2 vezes
+        if (errados.length == 3) {
+            texto('txtEstado')('Tente Novamente!!')
+            document.getElementById(errados[2]).classList.remove('errados')
+        }
+        else if (errados.length == 2 && errados[0] != evento.target && errados[1] != evento.target) { // se usuário já errou 2 vezes
             texto('txtEstado')('Tente Novamente!!')
             document.getElementById(sigla).classList.add('estadoCerto') // cria classe para estado certo 
+            document.getElementById(id).classList.add('errados')
             aparece("botaoProximo")
             habilita('botaoProximo') 
         }
@@ -137,6 +142,4 @@ const palpite = (capital) => {
     }
 }
 // Função que recarrega a página ao clicar no "Próximo".
-const reload = () => {
-    window.location.reload(true); 
-}
+const reload = () => window.location.reload(true)
