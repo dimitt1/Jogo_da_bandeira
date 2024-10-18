@@ -29,11 +29,15 @@ const estadosInfo = { // cria registro com estado e capital
     "SP" : ["São Paulo","São Paulo"],
     "TO" : ["Tocantins","Palmas"]
 }
+// Cria funções que fazem aparecer, desaparecer, habilitar e desabilitar elementos do html.
+const some = (x) => document.getElementById(x).style.display = 'none'
+const aparece = (x) => document.getElementById(x).style.display = 'initial'
+const habilita = (x) => document.getElementById(x).disabled = false
+const desabilita = (x) => document.getElementById(x).disabled = true
 
 const numAleatorio = (min,max) => {
     return min + Math.floor(Math.random()*max) 
 }
-
 // Essa constante armazena o nome do estado da rodada. 
 const nomeEstado = listaEstados[numAleatorio(0, listaEstados.length)]
 // Essa constante armazena a sigla do estado da rodada
@@ -42,14 +46,14 @@ const sigla = nomeEstado.slice(0,-4)
 const capital = estadosInfo[sigla][1]
 
 // Cria uma função para esconder o formulário 
-// (agora a função esconde cada elemento individualmente, em vez da div inteira)
+// Aplica a função "some" nos elementos da caixa de seleção.
 const esconder = () => {
-    document.getElementById("s0").style.display = 'none'
-    document.getElementById("s1").style.display = 'none'
-    document.getElementById("s2").style.display = 'none'
-    document.getElementById("botaoChute").style.display = 'none'
-    document.getElementById("botaoProximo").style.display = 'none'
-    document.getElementById("h5").style.display = 'none'
+    some("s0")
+    some("s1")
+    some("s2")
+    some("botaoChute")
+    some("botaoProximo")
+    some("h5")
     mostrarBandeira(nomeEstado)
 }
 //Função para mostrar a bandeira, ao clicar no botão próximo
