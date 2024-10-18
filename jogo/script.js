@@ -39,6 +39,7 @@ const texto = (x) => (txt) => document.getElementById(x).textContent = `${txt}`
 const numAleatorio = (min,max) => {
     return min + Math.floor(Math.random()*max) 
 }
+
 // Essa constante armazena o nome do estado da rodada. 
 const nomeEstado = listaEstados[numAleatorio(0, listaEstados.length)]
 // Essa constante armazena a sigla do estado da rodada
@@ -46,17 +47,14 @@ const sigla = nomeEstado.slice(0,-4)
 // Essa constante armazena a capital do estado da rodada
 const capital = estadosInfo[sigla][1]
 
-// Cria uma função para esconder o formulário 
-// Aplica a função "some" nos elementos da caixa de seleção.
-const esconder = () => {
-    some("s0")
-    some("s1")
-    some("s2")
-    some("botaoChute")
-    some("botaoProximo")
-    some("h5")
+// Cria uma função para começar, escondendo a segunda parte do jogo e mostrando a bandeira 
+const comecar = () => {
+    const esconderEl = ["s0", "s1", "s2", "botaoChute", "botaoProximo", "h5"]
+    esconderEl.map((x) => some(x)) // faz com que a função de sumir seja aplicada a todos os elementos que precisamos de uma vez
     mostrarBandeira(nomeEstado)
 }
+
+//Função para mostrar a bandeira, ao clicar no botão próximo
 const mostrarBandeira = (nomeEstado) => {
     const imagem = document.getElementById("bandeira")
     const nomeArquivo = "/bandeiras/" + nomeEstado // Removi o '+png' pq nomeEstado já vem com .png no final
@@ -73,23 +71,18 @@ const palpiteMapa = (evento) => {
         texto('txtEstado')('Clique sobre o mapa!')
     }
     else if (id == sigla && certo.length != 1) { // compara o id com a sigla do estado da rodada e verifica se já foi criada a classe para o estado certo
+        const palpiteMapaAparecer = ["respostaDiv", "h5", "s0", "s1", "s2", "botaoChute", "botaoProximo"]
+        palpiteMapaAparecer.map((x) => aparece(x) )
         texto('txtEstado')('Correto!!')
-        document.getElementById("s0").disabled = false 
-        document.getElementById("mapa").style.display = 'none'
-        document.getElementById("respostaDiv").style.display ='initial'
-        document.getElementById("h5").style.display = 'initial'
-        document.getElementById("s0").style.display = 'initial'
-        document.getElementById("s1").style.display = 'initial'
-        document.getElementById("s2").style.display = 'initial'
-        document.getElementById("botaoChute").style.display = 'initial'
-        document.getElementById("botaoProximo").style.display = 'initial'
+        habilita("s0")
+        some("mapa") 
     }
     else {
         if (errados.length == 2 && errados[0] != evento.target && errados[1] != evento.target) { // se usuário já errou 2 vezes
             texto('txtEstado')('Tente Novamente!!')
             document.getElementById(sigla).classList.add('estadoCerto') // cria classe para estado certo 
-            document.getElementById('botaoProximo').style.display = 'initial'
-            document.getElementById('botaoProximo').disabled = false
+            aparece("botaoProximo")
+            habilita('botaoProximo') 
         }
         else {
             texto('txtEstado')('Incorreto!!')
@@ -97,6 +90,7 @@ const palpiteMapa = (evento) => {
         }
     }
 }
+
 //Função que checa o palpite e habilita e desabilita os campos, por enquanto ainda sem o estado da rodada.
 const palpite = (capital) => {
     if (document.getElementById("s0").value == "Escolher ⌵") {
@@ -105,12 +99,12 @@ const palpite = (capital) => {
     // Usando esatdosInfo[sigla] eu consigo acessar a capital pelo registro das capitais
     else if(document.getElementById("s0").value == capital){
         texto('saida')('Correto!!')
-        document.getElementById("botaoProximo").disabled = false
-        document.getElementById("botaoChute").disabled = true
+        habilita("botaoProximo")
+        desabilita("botaoChute")
     }
     else if (document.getElementById("s0").disabled == false){
-        document.getElementById("s0").disabled = true
-        document.getElementById("s1").disabled = false
+        desabilita("s0")
+        habilita("s1")
         texto('saida')('Incorreto')
     }
     else if (document.getElementById("s1").value == "Escolher ⌵") {
@@ -118,12 +112,12 @@ const palpite = (capital) => {
     }
     else if(document.getElementById("s1").value == capital){
         texto('saida')('Correto!!')
-        document.getElementById("botaoProximo").disabled = false
-        document.getElementById("botaoChute").disabled = true
+        habilita("botaoProximo")
+        desabilita("botaoChute")
      }
      else if (document.getElementById("s1").disabled == false){
-        document.getElementById("s1").disabled = true
-        document.getElementById("s2").disabled = false
+        desabilita("s1")
+        habilita("s2")
         texto('saida')('Incorreto!')
     }
      else if (document.getElementById("s2").value == "Escolher ⌵") {
@@ -131,17 +125,16 @@ const palpite = (capital) => {
     }
      else if(document.getElementById("s2").value == capital){
         texto('saida')('Correto!!')
-        document.getElementById("botaoProximo").disabled = false
-        document.getElementById("botaoChute").disabled = true
+        habilita("botaoProximo")
+        desabilita("botaoChute")
      }
     else {
-        document.getElementById("s1").disabled = true
-        document.getElementById("s2").disabled = true
-        document.getElementById("botaoChute").disabled = true
-        document.getElementById("botaoProximo").disabled = false
+        const elementosDesabilitar = ["s1", "s2", "botaoChute"]
+        elementosDesabilitar.map((x) => desabilita(x))
+        habilita("botaoProximo")
         texto('saida')(`A capital é: ${capital}`)
+        texto('saida')(`A capital é ${capital}`)
     }
-   
 }
 // Função que recarrega a página ao clicar no "Próximo".
 const reload = () => {
