@@ -34,6 +34,7 @@ const some = (x) => document.getElementById(x).style.display = 'none'
 const aparece = (x) => document.getElementById(x).style.display = 'initial'
 const habilita = (x) => document.getElementById(x).disabled = false
 const desabilita = (x) => document.getElementById(x).disabled = true
+const texto = (x) => (txt) => document.getElementById(x).textContent = `${txt}`
 
 const numAleatorio = (min,max) => {
     return min + Math.floor(Math.random()*max) 
@@ -56,24 +57,23 @@ const esconder = () => {
     some("h5")
     mostrarBandeira(nomeEstado)
 }
-//Função para mostrar a bandeira, ao clicar no botão próximo
 const mostrarBandeira = (nomeEstado) => {
     const imagem = document.getElementById("bandeira")
     const nomeArquivo = "/bandeiras/" + nomeEstado // Removi o '+png' pq nomeEstado já vem com .png no final
     imagem.src = nomeArquivo
-    document.getElementById("h5").textContent = "Selecione a capital de " + estadosInfo[nomeEstado.slice(0,-4)][0]
+    texto('h5')(`Selecione a capital de ${estadosInfo[nomeEstado.slice(0,-4)][0]}`)
 }
 
 // Cria uma função para verificar palpite do mapa 
 const palpiteMapa = (evento) => { 
     const errados = [...document.getElementsByClassName('errados')] // pegamos os estados já clicados e diferentes da bandeira da rodada
     const certo = [...document.getElementsByClassName('estadoCerto')]
-    const texto = evento.target.id // pega o id da área clicada
-    if (texto == 'svg') {
-        document.getElementById("txtEstado").textContent = 'Clique sobre o mapa!'
+    const id = evento.target.id // pega o id da área clicada
+    if (id == 'svg') {
+        texto('txtEstado')('Clique sobre o mapa!')
     }
-    else if (texto == sigla && certo.length != 1) { // compara o id com a sigla do estado da rodada e verifica se já foi criada a classe para o estado certo
-        document.getElementById("txtEstado").textContent = 'Correto!!'
+    else if (id == sigla && certo.length != 1) { // compara o id com a sigla do estado da rodada e verifica se já foi criada a classe para o estado certo
+        texto('txtEstado')('Correto!!')
         document.getElementById("s0").disabled = false 
         document.getElementById("mapa").style.display = 'none'
         document.getElementById("respostaDiv").style.display ='initial'
@@ -86,54 +86,51 @@ const palpiteMapa = (evento) => {
     }
     else {
         if (errados.length == 2 && errados[0] != evento.target && errados[1] != evento.target) { // se usuário já errou 2 vezes
-            document.getElementById("txtEstado").textContent = 'Tente Novamente!!'
+            texto('txtEstado')('Tente Novamente!!')
             document.getElementById(sigla).classList.add('estadoCerto') // cria classe para estado certo 
             document.getElementById('botaoProximo').style.display = 'initial'
             document.getElementById('botaoProximo').disabled = false
         }
         else {
-            document.getElementById("txtEstado").textContent = 'Incorreto!!'
-            document.getElementById(texto).classList.add('errados')
+            texto('txtEstado')('Incorreto!!')
+            document.getElementById(id).classList.add('errados')
         }
     }
 }
-
- 
-
 //Função que checa o palpite e habilita e desabilita os campos, por enquanto ainda sem o estado da rodada.
 const palpite = (capital) => {
     if (document.getElementById("s0").value == "Escolher ⌵") {
-        document.getElementById("saida").textContent = "Selecione uma capital"
+        texto('saida')('Selecione uma capital')
     }
     // Usando esatdosInfo[sigla] eu consigo acessar a capital pelo registro das capitais
     else if(document.getElementById("s0").value == capital){
-       document.getElementById("saida").textContent = "Correto!!"
-       document.getElementById("botaoProximo").disabled = false
-       document.getElementById("botaoChute").disabled = true
+        texto('saida')('Correto!!')
+        document.getElementById("botaoProximo").disabled = false
+        document.getElementById("botaoChute").disabled = true
     }
     else if (document.getElementById("s0").disabled == false){
         document.getElementById("s0").disabled = true
         document.getElementById("s1").disabled = false
-        document.getElementById("saida").textContent = "Incorreto"
+        texto('saida')('Incorreto')
     }
     else if (document.getElementById("s1").value == "Escolher ⌵") {
-        document.getElementById("saida").textContent = "Selecione uma capital"
+        texto('saida')('Selecione uma capital')
     }
     else if(document.getElementById("s1").value == capital){
-        document.getElementById("saida").textContent = "Correto!!"
+        texto('saida')('Correto!!')
         document.getElementById("botaoProximo").disabled = false
         document.getElementById("botaoChute").disabled = true
      }
      else if (document.getElementById("s1").disabled == false){
         document.getElementById("s1").disabled = true
         document.getElementById("s2").disabled = false
-        document.getElementById("saida").textContent = "Incorreto"
+        texto('saida')('Incorreto!')
     }
      else if (document.getElementById("s2").value == "Escolher ⌵") {
-        document.getElementById("saida").textContent = "Selecione uma capital"
+        texto('saida')('Selecione uma capital')
     }
      else if(document.getElementById("s2").value == capital){
-        document.getElementById("saida").textContent = "Correto!!"
+        texto('saida')('Correto!!')
         document.getElementById("botaoProximo").disabled = false
         document.getElementById("botaoChute").disabled = true
      }
@@ -142,7 +139,7 @@ const palpite = (capital) => {
         document.getElementById("s2").disabled = true
         document.getElementById("botaoChute").disabled = true
         document.getElementById("botaoProximo").disabled = false
-        document.getElementById("saida").textContent = capital
+        texto('saida')(`A capital é: ${capital}`)
     }
    
 }
