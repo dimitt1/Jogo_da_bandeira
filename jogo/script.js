@@ -40,24 +40,24 @@ const numAleatorio = (min,max) => {
     return min + Math.floor(Math.random()*max) 
 }
 
-// Essa constante armazena o nome do estado da rodada. 
+// Essa constante armazena o nome do estado da rodada, usamos o menor índice e o número de elementos da lista para gerar o número aleatório.
 const nomeEstado = listaEstados[numAleatorio(0, listaEstados.length)]
 // Essa constante armazena a sigla do estado da rodada
 const sigla = nomeEstado.slice(0,-4) 
-// Essa constante armazena a capital do estado da rodada
+// Essa constante armazena a capital do estado da rodada, percorrendo o registro a partir da sigla, e acessando a capital.
 const capital = estadosInfo[sigla][1]
 
-// Cria uma função para começar, escondendo a segunda parte do jogo e mostrando a bandeira 
+// Cria uma função para começar, escondendo a segunda parte do jogo e mostrando a bandeira.
 const comecar = () => {
     const esconderEl = ["s0", "s1", "s2", "botaoChute", "botaoProximo", "h5"]
     esconderEl.map((x) => some(x)) // faz com que a função de sumir seja aplicada a todos os elementos que precisamos de uma vez
     mostrarBandeira(nomeEstado)
 }
 
-//Função para mostrar a bandeira, ao clicar no botão próximo
+//Função para mostrar a bandeira, recebe o nome do estado como parâmetro e expõe a sua bandeira na tela.
 const mostrarBandeira = (nomeEstado) => {
     const imagem = document.getElementById("bandeira")
-    const nomeArquivo = "/bandeiras/" + nomeEstado // Removi o '+png' pq nomeEstado já vem com .png no final
+    const nomeArquivo = "/bandeiras/" + nomeEstado
     imagem.src = nomeArquivo
     texto('h5')(`Selecione a capital de ${estadosInfo[nomeEstado.slice(0,-4)][0]}`)
 }
@@ -65,7 +65,7 @@ const mostrarBandeira = (nomeEstado) => {
 // Cria uma função para verificar palpite do mapa 
 const palpiteMapa = (evento) => { 
     const errados = [...document.getElementsByClassName('errados')] // pegamos os estados já clicados e diferentes da bandeira da rodada
-    const certo = [...document.getElementsByClassName('estadoCerto')]
+    const certo = [...document.getElementsByClassName('estadoCerto')] //Essa lista só armazena o estado correto quando o jogador errar 3 vezes. 
     const id = evento.target.id // pega o id da área clicada
     if (id == 'svg') {
         texto('txtEstado')('Clique sobre o mapa!')
@@ -91,17 +91,17 @@ const palpiteMapa = (evento) => {
         }
         else {
             texto('txtEstado')('Incorreto!!')
-            document.getElementById(id).classList.add('errados')
+            document.getElementById(id).classList.add('errados') //Essa classe que permite o estado ficar vermelho, já está editada no css.
         }
     }
 }
 
-//Função que checa o palpite e habilita e desabilita os campos, por enquanto ainda sem o estado da rodada.
+//Função que checa o palpite e habilita e desabilita os campos, recebe a capital da rodada e compara com as respostas do formulário.
 const palpite = (capital) => {
+    //Condicionais para cada campo do formulário, sempre seguindo o padrão de proibir o campo padrão de seleção e depois verificando se a resposta bate.
     if (document.getElementById("s0").value == "Escolher ⌵") {
         texto('saida')('Selecione uma capital')
     }
-    // Usando esatdosInfo[sigla] eu consigo acessar a capital pelo registro das capitais
     else if(document.getElementById("s0").value == capital){
         texto('saida')('Correto!!')
         habilita("botaoProximo")
