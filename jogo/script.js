@@ -123,7 +123,7 @@ const palpite = (capital) => {
      else if (document.getElementById("s1").disabled == false){
         desabilita("s1")
         habilita("s2")
-        texto('saida')('Incorreto!')
+        texto('saida')('Incorreto')
     }
      else if (document.getElementById("s2").value == "Escolher ⌵") {
         texto('saida')('Selecione uma capital')
@@ -138,7 +138,6 @@ const palpite = (capital) => {
         elementosDesabilitar.map((x) => desabilita(x))
         habilita("botaoProximo")
         texto('saida')(`A capital é: ${capital}`)
-        texto('saida')(`A capital é ${capital}`)
     }
 }
 // Função que recarrega a página ao clicar no "Próximo".
